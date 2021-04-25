@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { USER_TOKEN, verify_timeout } = require("./config");
+const { STORE_TOKEN } = require("./config");
 const { Wait, NeverResolve } = require("./lib/utils");
 const net_events = require("./net_events");
 
@@ -7,9 +7,9 @@ const io = require("socket.io-client");
 
 setTick(async () => {
     
-    let SocketConnection = io(/*"https://api.fivemarket.org/"*/"http://localhost:40120");
+    let SocketConnection = io("https://api.fivemarket.org/");
 
-    SocketConnection.emit("room", `deliveries:${USER_TOKEN}`);
+    SocketConnection.emit("room", `deliveries:${STORE_TOKEN}`);
 
     SocketConnection.on("delivery:new", data => {
         let { id, passport, items } = data;
