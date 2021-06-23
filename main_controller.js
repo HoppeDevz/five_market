@@ -7,7 +7,7 @@ const io = require("socket.io-client");
 
 setTick(async () => {
     
-    let SocketConnection = io("https://api.fivemarket.org/");
+    let SocketConnection = io("https://api.fivemarket.com.br/");
 
     SocketConnection.emit("room", `deliveries:${STORE_TOKEN}`);
 
